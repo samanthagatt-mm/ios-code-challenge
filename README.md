@@ -1,8 +1,8 @@
 # ios-code-challenge
 
-INSTRUCTIONS:
-
 >> Please create your own branch before doing any work on the project.
+
+>> Please review the iOS_Code_Challenge_Instructions.PDF file for the specific requirements for this project.
 
 >> Be sure to read the code challenge documentation before beginning to ensure you understand the requirements.
 
