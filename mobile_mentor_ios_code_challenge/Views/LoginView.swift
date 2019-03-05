@@ -17,63 +17,15 @@ class MainView: UIView {
     }()
     
     var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "*password*", attributes: [NSAttributedString.Key.foregroundColor: UIColor().HexToColor(hexString: "#FFFFFF", alpha: 0.5)])
-        textField.backgroundColor = UIColor().HexToColor(hexString: "#0463AC", alpha: 1)
-        textField.layer.borderColor = UIColor().HexToColor(hexString: "#2590E3", alpha: 1).cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 25
-        textField.borderStyle = .line
-        textField.keyboardType = .emailAddress
-        textField.contentVerticalAlignment = .center
-        textField.textAlignment = .center
-        textField.textColor = UIColor().HexToColor(hexString: "#FFFFFF", alpha: 1)
-        textField.font = UIFont(name: "AvenirNext-Regular", size: 20)
-        textField.returnKeyType = .done
-        textField.borderStyle = .none
-        textField.layer.shadowColor = UIColor().HexToColor(hexString: "#000000", alpha: 1).cgColor
-        textField.layer.shadowRadius = 5
-        textField.layer.shadowOffset = CGSize(width: 0, height: 3)
-        textField.layer.shadowOpacity = 1
-        textField.layer.masksToBounds = false
-        
-        return textField
+        return UIElements.createTextField(placeholder: "*email*", keyboardType: .emailAddress)
     }()
     
     var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "*password*", attributes: [NSAttributedString.Key.foregroundColor: UIColor().HexToColor(hexString: "#FFFFFF", alpha: 0.5)])
-        textField.backgroundColor = UIColor().HexToColor(hexString: "#0463AC", alpha: 1)
-        textField.layer.borderColor = UIColor().HexToColor(hexString: "#2590E3", alpha: 1).cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 25
-        textField.borderStyle = .line
-        textField.keyboardType = .alphabet
-        textField.contentVerticalAlignment = .center
-        textField.textAlignment = .center
-        textField.textColor = UIColor().HexToColor(hexString: "#FFFFFF", alpha: 1)
-        textField.font = UIFont(name: "AvenirNext-Regular", size: 20)
-        textField.returnKeyType = .done
-        textField.borderStyle = .none
-        textField.layer.shadowColor = UIColor().HexToColor(hexString: "#000000", alpha: 1).cgColor
-        textField.layer.shadowRadius = 5
-        textField.layer.shadowOffset = CGSize(width: 0, height: 3)
-        textField.layer.shadowOpacity = 1
-        textField.layer.masksToBounds = false
-        
-        return textField
+        return UIElements.createTextField(placeholder: "*password*", keyboardType: .alphabet)
     }()
     
     var loginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("LOGIN", for: .normal)
-        button.titleLabel!.font = UIFont(name: "AvenirNext-DemiBold", size: 25)
-        button.setTitleColor(UIColor().HexToColor(hexString: "#50A3E3", alpha: 1), for: .normal)
-        button.backgroundColor = UIColor().HexToColor(hexString: "#000000", alpha: 0)
-        button.layer.borderWidth = 0
-        button.layer.borderColor = UIColor().HexToColor(hexString: "#000000", alpha: 0).cgColor
-        
-        return button
+        return UIElements.createButton(text: "LOGIN")
     }()
     
     override init(frame: CGRect) {

@@ -74,4 +74,11 @@ class Constraints {
         
     }
     
+    func constraintWithTopBottomAndCenterXAnchor(field: AnyObject, width: CGFloat, topAnchor: NSLayoutAnchor<NSLayoutYAxisAnchor>, topConstant: CGFloat, bottomAnchor: NSLayoutAnchor<NSLayoutYAxisAnchor>, bottomConstant: CGFloat, centerXAnchor: NSLayoutAnchor<NSLayoutXAxisAnchor>, centerXConstant: CGFloat) {
+        
+        field.widthAnchor.constraint(equalToConstant: width).isActive = true
+        field.topAnchor.constraint(equalTo: topAnchor, constant: topConstant).isActive = true
+        field.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomConstant).isActive = true
+        field.centerXAnchor.constraint(equalTo: centerXAnchor, constant: centerXConstant).isActive = true
+    }
 }

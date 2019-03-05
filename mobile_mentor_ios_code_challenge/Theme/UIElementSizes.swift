@@ -26,4 +26,5 @@ struct UIElementSizes {
     static var buttonWidth: CGFloat = UIScreen.main.bounds.width / 2
     static var buttonHeight: CGFloat = 50
     
+    static var tableViewWidth: CGFloat = UIScreen.main.bounds.width - 50
 }

@@ -103,7 +103,9 @@ class LoginController: UIViewController, UITextFieldDelegate {
     
     fileprivate func comparePassword(password: String, savedPassword: String) {
         if password == savedPassword {
-            print("User Login Successful. Navigate to SearchController")
+            let viewController = SearchController()
+            // Present with a new navigation controller so user can't go back to login screen
+            present(UINavigationController(rootViewController: viewController), animated: true)
         } else {
             let alertController = CreateAlertController().withCancelAction(title: "Incorrect Password", message: "Please re-enter your password and try again.")
             
