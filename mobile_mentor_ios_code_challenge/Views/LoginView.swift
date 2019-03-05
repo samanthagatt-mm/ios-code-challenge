@@ -101,6 +101,8 @@ class MainView: UIView {
         addSubview(passwordTextField)
         addSubview(loginButton)
         
+        // Calls setConstraints function so subviews show up
+        setConstraints()
     }
     
     fileprivate func setLogoImageViewImage() {
@@ -112,6 +114,12 @@ class MainView: UIView {
     }
     
     fileprivate func setConstraints() {
+        
+        // Fixes conflicting constraints
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
         
         Constraints().constraintWithTopAndCenterXAnchor(field: logoImageView, width: 150, height: 150, topAnchor: topAnchor, topConstant: UIElementSizes.navigationBarMaxY + 75, centerXAnchor: centerXAnchor, centerXConstant: 0)
         

@@ -35,8 +35,9 @@ class LoginController: UIViewController, UITextFieldDelegate {
     
     fileprivate func setupUserAccounts() {
         
-        let defaultUsers = ["jane.smith@email.com", "john.doe@email.com"]
-        let defaultUserPasswords = ["test1234%^&*", "*&^%4321tset"]
+        // Adds a default user and password for quick testing
+        let defaultUsers = ["jane.smith@email.com", "john.doe@email.com", "test"]
+        let defaultUserPasswords = ["test1234%^&*", "*&^%4321tset", "test"]
         
         var userCount = 0
         
@@ -44,7 +45,8 @@ class LoginController: UIViewController, UITextFieldDelegate {
             UserAccountViewModel.userEmail = defaultUsers[userCount]
             UserAccountViewModel.userPassword = defaultUserPasswords[userCount]
             UserAccountViewModel().setUserDict()
-            userCount = 1
+            // Increments userCount so while condition will become false
+            userCount += 1
         } while userCount < defaultUsers.count
         
     }
@@ -58,7 +60,13 @@ class LoginController: UIViewController, UITextFieldDelegate {
         dismissKeyboardTapGestureRecognizer.cancelsTouchesInView = false
         mainView.addGestureRecognizer(dismissKeyboardTapGestureRecognizer)
         
+        // Adds the login action to the login button
+        mainView.loginButton.addTarget(self, action: #selector(handleLoginButtonTap(sender:)), for: .touchUpInside)
+        
         view.addSubview(mainView)
+        // Constrains mainView to the view controller's view
+        mainView.translatesAutoresizingMaskIntoConstraints = false
+        Constraints().constraintWithTopAndLeadingAnchor(field: mainView, width: view.safeAreaLayoutGuide.layoutFrame.width, height: view.safeAreaLayoutGuide.layoutFrame.height, topAnchor: view.safeAreaLayoutGuide.topAnchor, topConstant: 0.0, leadingAnchor: view.safeAreaLayoutGuide.leadingAnchor, leadingConstant: 0.0)
     }
     
     @objc fileprivate func dismissKeyboard() {
