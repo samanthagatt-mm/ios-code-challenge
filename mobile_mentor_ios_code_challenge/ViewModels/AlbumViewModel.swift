@@ -15,7 +15,10 @@ struct AlbumViewModel {
     static var year: String?
     static var artist: String?
     static var songs: [Song] = []
-    static var image: UIImage?
+    static var imageNumber: Int?
+    static var image: UIImage? {
+        return SearchResultViewModel.images[AlbumViewModel.imageNumber ?? 0]
+    }
     
     static func setAlbum(_ album: Album) {
         AlbumViewModel.songs = album.results.filter( { $0.wrapperType == "track" } )
@@ -27,7 +30,7 @@ struct AlbumViewModel {
         AlbumViewModel.artist = albumInfo?.artistName
     }
     
-    static func setImage(_ image: UIImage?) {
-        AlbumViewModel.image = image
+    static func setImageNumber(_ number: Int) {
+        AlbumViewModel.imageNumber = number
     }
 }

@@ -6,9 +6,10 @@
 //  Copyright © 2019 Elite Endurance Louisville. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class SearchResultViewModel {
     
     static var results: [SearchResult] = []
+    static var images: [Int: UIImage] = [:]
 }

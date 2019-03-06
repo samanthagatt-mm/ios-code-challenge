@@ -32,6 +32,9 @@ class AlbumTableViewHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
+        backgroundView = UIView()
+        backgroundView?.backgroundColor = UIColor().HexToColor(hexString: "#323F44", alpha: 1)
+        
         addSubview(coverImageView)
         addSubview(titleLabel)
         addSubview(artistLabel)

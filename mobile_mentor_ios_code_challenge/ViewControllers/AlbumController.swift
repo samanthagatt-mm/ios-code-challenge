@@ -21,10 +21,11 @@ class AlbumController: UIViewController, UITableViewDelegate, UITableViewDataSou
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SongCell")
+        tableView.register(AlbumTableViewHeader.self, forHeaderFooterViewReuseIdentifier: "AlbumHeader")
         
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        Constraints().constraintWithTopAndLeadingAnchor(field: tableView, width: view.safeAreaLayoutGuide.layoutFrame.width, height: view.safeAreaLayoutGuide.layoutFrame.height, topAnchor: view.safeAreaLayoutGuide.topAnchor, topConstant: 0.0, leadingAnchor: view.safeAreaLayoutGuide.leadingAnchor, leadingConstant: 0.0)
+        Constraints().constraintWithTopAndLeadingAnchor(field: tableView, width: view.safeAreaLayoutGuide.layoutFrame.width, height: view.safeAreaLayoutGuide.layoutFrame.height - 120, topAnchor: view.safeAreaLayoutGuide.topAnchor, topConstant: 0.0, leadingAnchor: view.safeAreaLayoutGuide.leadingAnchor, leadingConstant: 0.0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,7 +43,10 @@ class AlbumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = AlbumTableViewHeader()
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "AlbumHeader") as? AlbumTableViewHeader else {
+            return UITableViewHeaderFooterView()
+        }
+        header.coverImageView.image = AlbumViewModel.image
         header.titleLabel.text = AlbumViewModel.title
         header.artistLabel.text = AlbumViewModel.artist
         header.genreYearLabel.text = "\(AlbumViewModel.genre ?? "") • \(AlbumViewModel.year ?? "")"

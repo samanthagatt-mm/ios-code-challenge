@@ -24,7 +24,7 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        Constraints().constraintWithTopAndLeadingAnchor(field: tableView, width: view.safeAreaLayoutGuide.layoutFrame.width, height: view.safeAreaLayoutGuide.layoutFrame.height, topAnchor: view.safeAreaLayoutGuide.topAnchor, topConstant: 0.0, leadingAnchor: view.safeAreaLayoutGuide.leadingAnchor, leadingConstant: 0.0)
+        Constraints().constraintWithTopAndLeadingAnchor(field: tableView, width: view.safeAreaLayoutGuide.layoutFrame.width, height: view.safeAreaLayoutGuide.layoutFrame.height - 120, topAnchor: view.safeAreaLayoutGuide.topAnchor, topConstant: 0.0, leadingAnchor: view.safeAreaLayoutGuide.leadingAnchor, leadingConstant: 0.0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,6 +39,7 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         NetworkHelper.getImage(urlString: SearchResultViewModel.results[indexPath.row].artworkUrl100 ?? "") { (image) in
             cell.coverImageView.image = image
+            SearchResultViewModel.images[indexPath.row] = image
         }
         
         cell.songLabel.text = SearchResultViewModel.results[indexPath.row].trackName
@@ -56,6 +57,7 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         NetworkHelper.fetch(SearchResultViewModel.results[indexPath.row].collectionId ?? 0) { success in
             if success {
+                AlbumViewModel.setImageNumber(indexPath.row)
                 let viewController = AlbumController()
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
