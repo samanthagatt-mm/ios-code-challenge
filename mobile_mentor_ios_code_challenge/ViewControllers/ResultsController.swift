@@ -32,9 +32,15 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultTableViewCell else {
             return UITableViewCell()
         }
+        
+        NetworkHelper.getImage(urlString: SearchResultViewModel.results[indexPath.row].artworkUrl100 ?? "") { (image) in
+            cell.coverImageView.image = image
+        }
+        
         cell.songLabel.text = SearchResultViewModel.results[indexPath.row].trackName
         cell.albumLabel.text = SearchResultViewModel.results[indexPath.row].collectionName
         cell.artistLabel.text = SearchResultViewModel.results[indexPath.row].artistName

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Elite Endurance Louisville. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkHelper {
     
@@ -54,5 +54,39 @@ class NetworkHelper {
             }
             
         }.resume()
+    }
+    
+    static func getImage(urlString: String, completion: @escaping (UIImage?) -> Void ) {
+        
+        guard let url = URL(string: urlString) else {
+            NSLog("Error constructing the url for \(urlString)")
+            completion(nil)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, status, error) in
+            DispatchQueue.main.async {
+                if let error = error {
+                    NSLog("Error fetching image from \(urlString): \(error)")
+                    completion(nil)
+                    return
+                }
+                
+                guard let data = data else {
+                    NSLog("No image data returned from \(urlString)")
+                    completion(nil)
+                    return
+                }
+                
+                guard let image = UIImage(data: data) else {
+                    NSLog("Error decoding image from \(urlString)")
+                    completion(nil)
+                    return
+                }
+                
+                completion(image)
+            }
+            
+            }.resume()
     }
 }
