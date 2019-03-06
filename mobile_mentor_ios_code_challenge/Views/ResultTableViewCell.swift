@@ -55,10 +55,10 @@ class ResultTableViewCell: UITableViewCell {
         
         Constraints().constraintWithTopAndLeadingAnchor(field: coverImageView, width: 120, height: 120, topAnchor: topAnchor, topConstant: 20, leadingAnchor: leadingAnchor, leadingConstant: 20)
         
-        Constraints().constraintWithTopAndLeadingAnchor(field: songLabel, width: 60, height: 20, topAnchor: topAnchor, topConstant: 20, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
+        Constraints().constraintWithTopAndLeadingAnchor(field: songLabel, width: frame.width - 80, height: 20, topAnchor: topAnchor, topConstant: 20, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
         
-        Constraints().constraintWithTopAndLeadingAnchor(field: albumLabel, width: 60, height: 20, topAnchor: songLabel.bottomAnchor, topConstant: 6, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
+        Constraints().constraintWithTopAndLeadingAnchor(field: albumLabel, width: frame.width - 80, height: 20, topAnchor: songLabel.bottomAnchor, topConstant: 6, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
         
-        Constraints().constraintWithTopAndLeadingAnchor(field: artistLabel, width: 60, height: 20, topAnchor: albumLabel.bottomAnchor, topConstant: 6, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
+        Constraints().constraintWithTopAndLeadingAnchor(field: artistLabel, width: frame.width - 80, height: 20, topAnchor: albumLabel.bottomAnchor, topConstant: 6, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
     }
 }

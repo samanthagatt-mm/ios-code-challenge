@@ -28,11 +28,17 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return SearchResultViewModel.results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.songLabel.text = SearchResultViewModel.results[indexPath.row].trackName
+        cell.albumLabel.text = SearchResultViewModel.results[indexPath.row].collectionName
+        cell.artistLabel.text = SearchResultViewModel.results[indexPath.row].artistName
+        
         return cell
     }
     
