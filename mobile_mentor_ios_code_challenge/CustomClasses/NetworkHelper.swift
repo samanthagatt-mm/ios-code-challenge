@@ -15,7 +15,7 @@ class NetworkHelper {
     static func search(by term: String, completion: @escaping (_ success: Bool) -> Void) {
         
         var components = URLComponents(string: NetworkHelper.urlString)
-        components?.path = "search"
+        components?.path = "/search"
         let searchQuery = URLQueryItem(name: "term", value: term.replacingOccurrences(of: " ", with: "+"))
         components?.queryItems = [searchQuery]
         
@@ -93,7 +93,7 @@ class NetworkHelper {
     
     static func fetch(_ albumID: Int, completion: @escaping (Bool) -> Void ) {
         var components = URLComponents(string: NetworkHelper.urlString)
-        components?.path = "lookup"
+        components?.path = "/lookup"
         let idQuery = URLQueryItem(name: "id", value: String(albumID))
         let songQuery = URLQueryItem(name: "entity", value: "song")
         components?.queryItems = [idQuery, songQuery]
@@ -122,7 +122,8 @@ class NetworkHelper {
                 
                 do {
                     // Fix later
-                    let _ = try JSONDecoder().decode(SearchResults.self, from: data)
+                    let album = try JSONDecoder().decode(Album.self, from: data)
+                    AlbumViewModel.setAlbum(album)
                     completion(true)
                     
                 } catch {
