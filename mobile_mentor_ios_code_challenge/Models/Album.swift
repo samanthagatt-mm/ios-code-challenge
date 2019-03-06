@@ -13,9 +13,9 @@ struct Album: Decodable {
 }
 
 struct Song: Decodable {
-    let wrapperType: String
+    let wrapperType: String?
     let trackName: String?
     let trackNumber: Int?
     let primaryGenreName: String?
-    let releaseDate: Date?
+    let releaseDate: String?
 }

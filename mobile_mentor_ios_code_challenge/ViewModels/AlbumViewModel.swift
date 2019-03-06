@@ -21,10 +21,7 @@ struct AlbumViewModel {
         // Should only be one
         let album = album.results.filter( {$0.wrapperType == "collection"} ).first
         AlbumViewModel.genre = album?.primaryGenreName
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY"
-        // If releaseDate is nil, current date will be used
-        AlbumViewModel.year = dateFormatter.string(from: album?.releaseDate ?? Date())
+        AlbumViewModel.year = String(album?.releaseDate?.prefix(4) ?? "")
     }
     
     static func setImage(_ image: UIImage?) {

@@ -121,11 +121,9 @@ class NetworkHelper {
                 }
                 
                 do {
-                    // Fix later
                     let album = try JSONDecoder().decode(Album.self, from: data)
                     AlbumViewModel.setAlbum(album)
                     completion(true)
-                    
                 } catch {
                     NSLog("Error decoding lookup results for album \(albumID): \(error)")
                     completion(false)
