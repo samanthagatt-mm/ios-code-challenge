@@ -75,4 +75,15 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        NetworkHelper.search(by: SearchHistoryViewModel.history[indexPath.row].term) { [weak self] (success) in
+            if success {
+                self?.searchView.historyTableView.reloadData()
+                let viewController = ResultsController()
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
+    }
+    
 }

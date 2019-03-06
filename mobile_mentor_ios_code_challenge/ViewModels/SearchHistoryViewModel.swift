@@ -14,7 +14,7 @@ struct SearchHistoryViewModel {
         for search in SearchHistory.history[UserAccountViewModel.userID ?? 0] ?? [:] {
             searches.append((term: search.key, date: search.value))
         }
-        searches.sort(by: { $0.term < $1.term })
+        searches.sort(by: { $0.date < $1.date })
         return searches
     }
     
