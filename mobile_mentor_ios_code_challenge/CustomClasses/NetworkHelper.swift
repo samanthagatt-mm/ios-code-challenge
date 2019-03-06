@@ -10,11 +10,12 @@ import UIKit
 
 class NetworkHelper {
     
-    static let urlString = "https://itunes.apple.com/search"
+    static let urlString = "https://itunes.apple.com"
     
     static func search(by term: String, completion: @escaping (_ success: Bool) -> Void) {
         
         var components = URLComponents(string: NetworkHelper.urlString)
+        components?.path = "search"
         let searchQuery = URLQueryItem(name: "term", value: term.replacingOccurrences(of: " ", with: "+"))
         components?.queryItems = [searchQuery]
         
@@ -87,6 +88,50 @@ class NetworkHelper {
                 completion(image)
             }
             
-            }.resume()
+        }.resume()
+    }
+    
+    static func fetch(_ albumID: Int, completion: @escaping (Bool) -> Void ) {
+        var components = URLComponents(string: NetworkHelper.urlString)
+        components?.path = "lookup"
+        let idQuery = URLQueryItem(name: "id", value: String(albumID))
+        let songQuery = URLQueryItem(name: "entity", value: "song")
+        components?.queryItems = [idQuery, songQuery]
+        
+        guard let lookupURL = components?.url else {
+            NSLog("Error constructing lookup url for album \(albumID)")
+            completion(false)
+            return
+        }
+        let request = URLRequest(url: lookupURL)
+        
+        URLSession.shared.dataTask(with: request) { (data, status, error) in
+            
+            DispatchQueue.main.async {
+                if let error = error {
+                    NSLog("Error looking up album \(albumID): \(error)")
+                    completion(false)
+                    return
+                }
+                
+                guard let data = data else {
+                    NSLog("No data returned from album \(albumID) lookup")
+                    completion(false)
+                    return
+                }
+                
+                do {
+                    // Fix later
+                    let _ = try JSONDecoder().decode(SearchResults.self, from: data)
+                    completion(true)
+                    
+                } catch {
+                    NSLog("Error decoding lookup results for album \(albumID): \(error)")
+                    completion(false)
+                    return
+                }
+            }
+            
+        }.resume()
     }
 }

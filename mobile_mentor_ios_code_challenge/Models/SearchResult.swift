@@ -12,6 +12,7 @@ struct SearchResult: Decodable {
     var artworkUrl100: String?
     var trackName: String?
     var collectionName: String?
+    var collectionId: Int?
     var artistName: String?
 }
 

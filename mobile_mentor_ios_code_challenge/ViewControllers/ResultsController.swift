@@ -51,4 +51,15 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160.0
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        NetworkHelper.fetch(SearchResultViewModel.results[indexPath.row].collectionId ?? 0) { success in
+            if success {
+                let viewController = AlbumController()
+                navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
+        
+    }
 }

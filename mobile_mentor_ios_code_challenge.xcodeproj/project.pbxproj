@@ -18,6 +18,7 @@
 		2279A29E2230160000BC6861 /* SearchHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2279A29D2230160000BC6861 /* SearchHistoryViewModel.swift */; };
 		2279A2A02230228100BC6861 /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2279A29F2230228100BC6861 /* ResultsController.swift */; };
 		2279A2A42230285200BC6861 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2279A2A32230285200BC6861 /* ResultTableViewCell.swift */; };
+		2279A2A62230397900BC6861 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2279A2A52230397900BC6861 /* AlbumController.swift */; };
 		362E80CC221386EE00EEED0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362E80CB221386EE00EEED0D /* AppDelegate.swift */; };
 		362E80D3221386F200EEED0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 362E80D2221386F200EEED0D /* Assets.xcassets */; };
 		362E80D6221386F200EEED0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362E80D4221386F200EEED0D /* LaunchScreen.storyboard */; };
@@ -42,6 +43,7 @@
 		2279A29D2230160000BC6861 /* SearchHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewModel.swift; sourceTree = "<group>"; };
 		2279A29F2230228100BC6861 /* ResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsController.swift; sourceTree = "<group>"; };
 		2279A2A32230285200BC6861 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		2279A2A52230397900BC6861 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 		362E80C8221386EE00EEED0D /* mobile_mentor_ios_code_challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobile_mentor_ios_code_challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		362E80CB221386EE00EEED0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		362E80D2221386F200EEED0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				362E81232213915F00EEED0D /* LoginController.swift */,
 				2279A28F222F025600BC6861 /* SearchController.swift */,
 				2279A29F2230228100BC6861 /* ResultsController.swift */,
+				2279A2A52230397900BC6861 /* AlbumController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				362E813822139A5A00EEED0D /* Constraints.swift in Sources */,
+				2279A2A62230397900BC6861 /* AlbumController.swift in Sources */,
 				2279A290222F025600BC6861 /* SearchController.swift in Sources */,
 				362E81202213910900EEED0D /* LoginView.swift in Sources */,
 				362E811E221390E500EEED0D /* UIColor.swift in Sources */,
