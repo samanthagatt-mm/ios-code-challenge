@@ -33,10 +33,23 @@ class AlbumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
+        cell.selectionStyle = .none
         cell.backgroundColor = UIColor().HexToColor(hexString: "#323F44", alpha: 1)
         cell.textLabel?.textColor = UIColor().HexToColor(hexString: "#50A3E3", alpha: 1)
         let song = AlbumViewModel.songs[indexPath.row]
         cell.textLabel?.text = "\(song.trackNumber ?? 0). \(song.trackName ?? "")"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = AlbumTableViewHeader()
+        header.titleLabel.text = AlbumViewModel.title
+        header.artistLabel.text = AlbumViewModel.artist
+        header.genreYearLabel.text = "\(AlbumViewModel.genre ?? "") • \(AlbumViewModel.year ?? "")"
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 160.0
     }
 }

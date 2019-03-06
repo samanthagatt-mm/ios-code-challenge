@@ -10,6 +10,7 @@ import UIKit
 
 struct AlbumViewModel {
     
+    static var title: String?
     static var genre: String?
     static var year: String?
     static var artist: String?
@@ -19,9 +20,11 @@ struct AlbumViewModel {
     static func setAlbum(_ album: Album) {
         AlbumViewModel.songs = album.results.filter( { $0.wrapperType == "track" } )
         // Should only be one
-        let album = album.results.filter( {$0.wrapperType == "collection"} ).first
-        AlbumViewModel.genre = album?.primaryGenreName
-        AlbumViewModel.year = String(album?.releaseDate?.prefix(4) ?? "")
+        let albumInfo = album.results.filter( {$0.wrapperType == "collection"} ).first
+        AlbumViewModel.genre = albumInfo?.primaryGenreName
+        AlbumViewModel.year = String(albumInfo?.releaseDate?.prefix(4) ?? "")
+        AlbumViewModel.title = albumInfo?.collectionName
+        AlbumViewModel.artist = albumInfo?.artistName
     }
     
     static func setImage(_ image: UIImage?) {

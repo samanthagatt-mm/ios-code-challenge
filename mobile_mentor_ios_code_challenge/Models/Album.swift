@@ -18,4 +18,6 @@ struct Song: Decodable {
     let trackNumber: Int?
     let primaryGenreName: String?
     let releaseDate: String?
+    var collectionName: String?
+    var artistName: String?
 }

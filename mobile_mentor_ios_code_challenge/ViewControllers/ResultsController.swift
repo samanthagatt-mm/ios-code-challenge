@@ -56,8 +56,6 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         NetworkHelper.fetch(SearchResultViewModel.results[indexPath.row].collectionId ?? 0) { success in
             if success {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultTableViewCell else { return }
-                AlbumViewModel.setImage(cell.coverImageView.image)
                 let viewController = AlbumController()
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
