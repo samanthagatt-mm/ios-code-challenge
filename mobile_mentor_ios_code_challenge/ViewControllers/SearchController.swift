@@ -47,8 +47,11 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let term = searchView.textField.text
         NetworkHelper.search(by: term ?? "") { [weak self] (success) in
             if success {
+                // Fix later
                 self?.searchView.toggleHistoryTableViewVisibility()
                 self?.searchView.historyTableView.reloadData()
+                let viewController = ResultsController()
+                self?.navigationController?.pushViewController(viewController, animated: true)
             }
         }
     }
