@@ -14,9 +14,12 @@ struct UserAccountViewModel {
     
     static var userPassword: String?
     
+    static var userID: Int?
+    
     func setUserDict() {
         let userID = UserAccounts.userAccountEmail.count > 0 ? UserAccounts.userAccountEmail.count : 0
         
+        UserAccountViewModel.userID = userID
         UserAccounts.userAccountEmail[userID] = UserAccountViewModel.userEmail
         UserAccounts.userPasswords[userID] = UserAccountViewModel.userPassword
     }

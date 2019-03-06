@@ -57,7 +57,7 @@ class SearchView: UIView {
         Constraints().constraintWithTopBottomAndCenterXAnchor(field: historyTableView, width: UIElementSizes.windowWidth, topAnchor: searchButton.bottomAnchor, topConstant: 25, bottomAnchor: bottomAnchor, bottomConstant: -25, centerXAnchor: centerXAnchor, centerXConstant: 0.0)
     }
     
-    func unhideHistoryTableView() {
-        historyTableView.isHidden = false
+    func toggleHistoryTableViewVisibility() {
+        historyTableView.isHidden = !historyTableView.isHidden
     }
 }
