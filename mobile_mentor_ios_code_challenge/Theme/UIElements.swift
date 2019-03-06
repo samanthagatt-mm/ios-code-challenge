@@ -51,4 +51,12 @@ class UIElements {
         tableView.backgroundColor = UIColor().HexToColor(hexString: "#323F44", alpha: 1)
         return tableView
     }
+    
+    static func createLabel(text: String, font: String = "AvenirNext-DemiBold", size: CGFloat = 20.0) -> UILabel {
+        let label = UILabel()
+        label.textColor = UIColor().HexToColor(hexString: "#50A3E3", alpha: 1)
+        label.font = UIFont(name: font, size: size)
+        label.text = text
+        return label
+    }
 }
