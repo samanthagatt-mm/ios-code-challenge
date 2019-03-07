@@ -22,11 +22,11 @@ class ResultTableViewCell: UITableViewCell {
     }()
     
     var albumLabel: UILabel = {
-        return UIElements.createLabel(text: "album")
+        return UIElements.createLabel(text: "album", font: "AvenirNext", size: 15.0)
     }()
     
     var artistLabel: UILabel = {
-        return UIElements.createLabel(text: "artist")
+        return UIElements.createLabel(text: "artist", font: "AvenirNext", size: 15.0)
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

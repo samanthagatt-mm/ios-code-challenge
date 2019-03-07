@@ -37,6 +37,7 @@ class AlbumController: UIViewController, UITableViewDelegate, UITableViewDataSou
         cell.selectionStyle = .none
         cell.backgroundColor = UIColor().HexToColor(hexString: "#323F44", alpha: 1)
         cell.textLabel?.textColor = UIColor().HexToColor(hexString: "#50A3E3", alpha: 1)
+        cell.textLabel?.font = UIFont(name: "AvenirNext", size: 15.0)
         let song = AlbumViewModel.songs[indexPath.row]
         cell.textLabel?.text = "\(song.trackNumber ?? 0). \(song.trackName ?? "")"
         return cell

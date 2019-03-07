@@ -18,15 +18,17 @@ class AlbumTableViewHeader: UITableViewHeaderFooterView {
     }()
     
     var titleLabel: UILabel = {
-        return UIElements.createLabel(text: "title")
+        let label = UIElements.createLabel(text: "title")
+        label.numberOfLines = 0
+        return label
     }()
     
     var artistLabel: UILabel = {
-        return UIElements.createLabel(text: "artist")
+        return UIElements.createLabel(text: "artist", font: "AvenirNext", size: 15.0)
     }()
     
     var genreYearLabel: UILabel = {
-        return UIElements.createLabel(text: "genre • year")
+        return UIElements.createLabel(text: "genre • year", font: "AvenirNext", size: 15.0)
     }()
     
     override init(reuseIdentifier: String?) {
@@ -56,10 +58,10 @@ class AlbumTableViewHeader: UITableViewHeaderFooterView {
         
         Constraints().constraintWithTopAndLeadingAnchor(field: coverImageView, width: 120, height: 120, topAnchor: topAnchor, topConstant: 20, leadingAnchor: leadingAnchor, leadingConstant: 20)
         
-        Constraints().constraintWithTopAndLeadingAnchor(field: titleLabel, width: 200, height: 20, topAnchor: topAnchor, topConstant: 20, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
+        Constraints().constraintWithTopAndLeadingAnchor(field: titleLabel, width: UIElementSizes.windowWidth - 160, height: 60, topAnchor: topAnchor, topConstant: 20, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
         
-        Constraints().constraintWithTopAndLeadingAnchor(field: artistLabel, width: 200, height: 20, topAnchor: titleLabel.bottomAnchor, topConstant: 6, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
+        Constraints().constraintWithTopAndLeadingAnchor(field: artistLabel, width: UIElementSizes.windowWidth - 160, height: 20, topAnchor: titleLabel.bottomAnchor, topConstant: 6, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
         
-        Constraints().constraintWithTopAndLeadingAnchor(field: genreYearLabel, width: 200, height: 20, topAnchor: artistLabel.bottomAnchor, topConstant: 6, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
+        Constraints().constraintWithTopAndLeadingAnchor(field: genreYearLabel, width: UIElementSizes.windowWidth - 160, height: 20, topAnchor: artistLabel.bottomAnchor, topConstant: 6, leadingAnchor: coverImageView.trailingAnchor, leadingConstant: 10)
     }
 }
