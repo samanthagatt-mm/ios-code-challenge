@@ -28,7 +28,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         searchView.historyTableView.delegate = self
         searchView.historyTableView.dataSource = self
-        searchView.historyTableView.register(UITableViewCell.self, forCellReuseIdentifier: "HistoryCell")
+        searchView.historyTableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: "HistoryCell")
         
         searchView.searchButton.addTarget(self, action: #selector(search(sender:)), for: .touchUpInside)
         
@@ -61,17 +61,11 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as? HistoryTableViewCell else { return UITableViewCell() }
         
         cell.backgroundColor = .clear
-        cell.textLabel?.text = SearchHistoryViewModel.history[indexPath.row].term
-        cell.textLabel?.textColor = UIColor().HexToColor(hexString: "#0463AC", alpha: 1)
-        
-        // let dateFormatter = DateFormatter()
-        // dateFormatter.dateFormat = "dd-MM-YYYY hh:mm:ss"
-        // let dateString = dateFormatter.string(from: SearchHistoryViewModel.history[indexPath.row].date)
-        // cell.detailTextLabel?.text = dateString
-        // cell.detailTextLabel?.textColor = UIColor().HexToColor(hexString: "#0463AC", alpha: 1)
+        cell.termLabel.text = SearchHistoryViewModel.history[indexPath.row].term
+        cell.setDate(SearchHistoryViewModel.history[indexPath.row].date)
         
         return cell
     }
