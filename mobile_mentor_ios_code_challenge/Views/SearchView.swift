@@ -17,7 +17,7 @@ class SearchView: UIView {
     
     // button
     var searchButton: UIButton = {
-        return UIElements.createButton(text: "SEARCH")
+        return UIElements.createButton(text: "Search")
     }()
     
     // table view
@@ -50,14 +50,18 @@ class SearchView: UIView {
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         historyTableView.translatesAutoresizingMaskIntoConstraints = false
         
-        Constraints().constraintWithTopAndCenterXAnchor(field: textField, width: UIElementSizes.textFieldWidth, height: UIElementSizes.singleLineTextFieldHeight, topAnchor: topAnchor, topConstant: 75.0, centerXAnchor: centerXAnchor, centerXConstant: 0.0)
+        Constraints().constraintWithTopAndCenterXAnchor(field: textField, width: UIElementSizes.textFieldWidth, height: UIElementSizes.singleLineTextFieldHeight, topAnchor: topAnchor, topConstant: 35.0, centerXAnchor: centerXAnchor, centerXConstant: 0.0)
         
         Constraints().constraintWithTopAndCenterXAnchor(field: searchButton, width: UIElementSizes.buttonWidth, height: UIElementSizes.buttonHeight, topAnchor: textField.bottomAnchor, topConstant: 25, centerXAnchor: centerXAnchor, centerXConstant: 0)
 
         Constraints().constraintWithTopBottomAndCenterXAnchor(field: historyTableView, width: UIElementSizes.windowWidth, topAnchor: searchButton.bottomAnchor, topConstant: 25, bottomAnchor: bottomAnchor, bottomConstant: -25, centerXAnchor: centerXAnchor, centerXConstant: 0.0)
     }
     
-    func toggleHistoryTableViewVisibility() {
-        historyTableView.isHidden = !historyTableView.isHidden
+    func hideHistory() {
+        historyTableView.isHidden = true
+    }
+    
+    func showHistory() {
+        historyTableView.isHidden = false
     }
 }

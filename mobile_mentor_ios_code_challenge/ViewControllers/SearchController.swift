@@ -29,6 +29,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         searchView.historyTableView.delegate = self
         searchView.historyTableView.dataSource = self
         searchView.historyTableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: "HistoryCell")
+        searchView.historyTableView.register(HistoryTableViewHeader.self, forHeaderFooterViewReuseIdentifier: "HistoryHeader")
         
         searchView.searchButton.addTarget(self, action: #selector(search(sender:)), for: .touchUpInside)
         
@@ -47,8 +48,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let term = searchView.textField.text
         NetworkHelper.search(by: term ?? "") { [weak self] (success) in
             if success {
-                // Fix later
-                self?.searchView.toggleHistoryTableViewVisibility()
+                self?.searchView.showHistory()
                 self?.searchView.historyTableView.reloadData()
                 let viewController = ResultsController()
                 self?.navigationController?.pushViewController(viewController, animated: true)
@@ -80,4 +80,15 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = searchView.historyTableView.dequeueReusableHeaderFooterView(withIdentifier: "HistoryHeader") as? HistoryTableViewHeader else { return UITableViewHeaderFooterView() }
+        header.clearButton.addTarget(self, action: #selector(clearHistory(sender:)), for: .touchUpInside)
+        return header
+    }
+    
+    @objc func clearHistory(sender: UIButton) {
+        SearchHistoryViewModel.clearHistory()
+        searchView.hideHistory()
+        searchView.historyTableView.reloadData()
+    }
 }

@@ -34,10 +34,10 @@ class UIElements {
         return textField
     }
     
-    static func createButton(text: String) -> UIButton {
+    static func createButton(text: String, font: String = "AvenirNext-DemiBold", size: CGFloat = 25) -> UIButton {
         let button = UIButton()
         button.setTitle(text, for: .normal)
-        button.titleLabel!.font = UIFont(name: "AvenirNext-DemiBold", size: 25)
+        button.titleLabel!.font = UIFont(name: font, size: size)
         button.setTitleColor(UIColor().HexToColor(hexString: "#50A3E3", alpha: 1), for: .normal)
         button.backgroundColor = UIColor().HexToColor(hexString: "#000000", alpha: 0)
         button.layer.borderWidth = 0

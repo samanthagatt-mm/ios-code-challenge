@@ -26,4 +26,8 @@ struct SearchHistoryViewModel {
             SearchHistory.history[UserAccountViewModel.userID ?? 0] = [term: date]
         }
     }
+    
+    static func clearHistory() {
+        SearchHistory.history[UserAccountViewModel.userID ?? 0] = nil
+    }
 }
