@@ -8,10 +8,14 @@
 
 import UIKit
 
+extension Notification.Name {
+    static let signedInFromURL = Notification.Name("signedInFromURL")
+}
+
 class LoginController: UIViewController, UITextFieldDelegate {
     
     let mainView: MainView = { return MainView() }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +25,26 @@ class LoginController: UIViewController, UITextFieldDelegate {
         
         setupView()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(loginFromURL(_:)), name: .signedInFromURL, object: nil)
+    }
+    
+    @objc func loginFromURL(_ notification: Notification) {
+        guard let dict = notification.object as? [String: String] else { return }
+        
+        if let emailAddress = dict["email"],
+            let password = dict["password"],
+            let user = getUser(emailAddress: emailAddress) {
+            
+            guard let savedPassword = UserAccounts.userPasswords[user] else { return }
+            UserAccountViewModel.userEmail = emailAddress
+            comparePassword(password: password, savedPassword: savedPassword)
+        } else {
+            let alertController = CreateAlertController().withNoActions(title: "User Account Not Found", message: "The user account that you are attempting to use does not exist.")
+            alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alertController, animated: true) {
+                self.mainView.passwordTextField.text = ""
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +79,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
         mainView.emailTextField.delegate = self
         mainView.passwordTextField.delegate = self
         mainView.passwordTextField.isSecureTextEntry = true
-
+        
         let dismissKeyboardTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         dismissKeyboardTapGestureRecognizer.cancelsTouchesInView = false
         mainView.addGestureRecognizer(dismissKeyboardTapGestureRecognizer)
@@ -73,7 +97,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    @objc func handleLoginButtonTap(sender: UIButton) {
+    @objc func handleLoginButtonTap(sender: Any) {
         
         guard let emailAddress = mainView.emailTextField.text?.lowercased(),
             let password = mainView.passwordTextField.text else { return }

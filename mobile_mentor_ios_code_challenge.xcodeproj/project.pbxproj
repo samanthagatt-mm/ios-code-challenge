@@ -35,6 +35,7 @@
 		362E813822139A5A00EEED0D /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362E813722139A5A00EEED0D /* Constraints.swift */; };
 		362E813C22139A8600EEED0D /* CreateAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362E813B22139A8600EEED0D /* CreateAlertController.swift */; };
 		3673F78D22147F870045435E /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3673F78C22147F870045435E /* UserAccountViewModel.swift */; };
+		D6CBDFAC225FA1B3005D289A /* URL+QueryDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CBDFAB225FA1B3005D289A /* URL+QueryDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		3673F78C22147F870045435E /* UserAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		82276A9ED03023C60BA659B6 /* Pods_mobile_mentor_ios_code_challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobile_mentor_ios_code_challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22030297DB94B07604D2E34 /* Pods-mobile_mentor_ios_code_challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile_mentor_ios_code_challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobile_mentor_ios_code_challenge/Pods-mobile_mentor_ios_code_challenge.debug.xcconfig"; sourceTree = "<group>"; };
+		D6CBDFAB225FA1B3005D289A /* URL+QueryDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+QueryDictionary.swift"; sourceTree = "<group>"; };
 		F5C57F35E623F66622826977 /* Pods-mobile_mentor_ios_code_challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile_mentor_ios_code_challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobile_mentor_ios_code_challenge/Pods-mobile_mentor_ios_code_challenge.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				362E811D221390E500EEED0D /* UIColor.swift */,
+				D6CBDFAB225FA1B3005D289A /* URL+QueryDictionary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				2279A2A822303EB400BC6861 /* Album.swift in Sources */,
 				362E81242213915F00EEED0D /* LoginController.swift in Sources */,
 				362E813C22139A8600EEED0D /* CreateAlertController.swift in Sources */,
+				D6CBDFAC225FA1B3005D289A /* URL+QueryDictionary.swift in Sources */,
 				2279A29C223015B900BC6861 /* SearchHistory.swift in Sources */,
 				362E80CC221386EE00EEED0D /* AppDelegate.swift in Sources */,
 				2279A2B22231602900BC6861 /* HistoryTableViewHeader.swift in Sources */,
